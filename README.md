@@ -1,9 +1,9 @@
-# C  generic Data Structures. 
-Data structures implelemted:
+# Simple C generic Data Structures header files. 
+Data structures implelemted:Queue,Tree
+Only header files, download and include
 
 ## Queue
 
-Only header files, download and include
 
 Example:
 
