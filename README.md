@@ -2,12 +2,6 @@
 Data structures implelemted:
 
 ## Queue
-## Tree
-
-### TODO add Set/List/LinkedList/Stack
-
-
-# Basic usage
 
 Only header files, download and include
 
@@ -40,3 +34,7 @@ int main(void) {
 ```
 
 Result: ```15```
+
+## Tree
+
+### TODO add Set/List/LinkedList/Stack
