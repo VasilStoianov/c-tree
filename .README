@@ -1,3 +1,19 @@
+# C  generic Data Structures. 
+Data structures implelemted:
+
+## Queue
+## Tree
+
+### TODO add Set/List/LinkedList/Stack
+
+
+# Basic usage
+
+Only header files, download and include
+
+Example:
+
+``` 
 #include "queue.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,3 +37,6 @@ int main(void) {
     printf("%d\n",t2->val);
   return 1;
 }
+```
+
+Result: ```15```
