@@ -38,7 +38,7 @@ int main(void) {
     tt->value = malloc(sizeof(Test));
      memcpy(tt->value, t, sizeof(Test));
      push(&queue->head,*toPut,&queue);
-     push(&queue->head,*tp,&queue);
+     push(queue->head,*tp,&queue);
      push(&queue->head,*tt,&queue);
      QNode * head = pop(queue);
      printf("Head %d \n",((Test*) head->value)->val);
