@@ -1,5 +1,6 @@
 #pragma once
-#include "stdlib.h"
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 int MAX_SIZE = 25;
 
@@ -18,26 +19,33 @@ typedef struct Queue {
 } Queue;
 
 
-int push(QNode *head, QNode  toPut,Queue * queue){
-    if(head == NULL){
-        head = malloc(sizeof(QNode));
-       head->next = malloc(sizeof(sizeof(QNode)));
-       head->previous = malloc(sizeof(sizeof(QNode)));
-       head->value = malloc(sizeof((char*)toPut.value));
-       memcpy((char*)head->value,(char*)toPut.value,sizeof((char*)toPut.value));
-       queue->tail = head->next;
-      queue->head = head;
+int push(QNode **head, QNode  toPut,Queue ** queue){
+    if( toPut.value == NULL ){
+        printf("ERROR: Empty value to put");
+        return 0;
+    }
+    if((*head) == NULL ){
+        (*head) = malloc(sizeof(QNode));
+        (*head)->next = NULL;
+        (*head)->value = malloc(sizeof((char*)toPut.value));
+       memcpy((char*)(*head)->value,(char*)toPut.value,sizeof((char*)toPut.value));
+        if((*queue)->size == 0){
+       (*queue)->tail = *head;
+      (*queue)->head = *head;
+    }
+    else {
+        //(*head)->previous = (*queue)->tail;
+        (*head)->previous = malloc(sizeof(QNode));
+        (*queue)->tail->next = malloc(sizeof(QNode));
+        (*head)->previous = (*queue)->tail;
+        (*queue)->tail->next = (*head);
+        (*queue)->tail = (*head);
+    }
+      (*queue)->size++;
     return 1;
     }
-    if(head->next->value ==NULL){
-        head->next->next = malloc(sizeof(sizeof(QNode)));
-        head->next->previous = head;
-       head->next->value = malloc(sizeof((char*)toPut.value));
-       memcpy((char*)head->next->value,(char*)toPut.value,sizeof((char*)toPut.value));
-       queue->tail = head->next;
-       return 1;
-    }else {
-        push(head->next,toPut,queue);
+   else {
+        push(&(*head)->next,toPut,queue);
     }
 
     return 0;  
@@ -49,7 +57,14 @@ QNode* pop(Queue* queue){
    }
    QNode* res = queue->head;
    queue->head = queue->head->next;
+   if(queue->head != NULL){
+
    queue->head->previous = NULL;
+   }else {
+
+   queue->tail = queue->head;
+   }
+   --queue->size;
 return res;
 }
 
